@@ -61,12 +61,12 @@ Uncomment and install a package if you didn't already.
 
 #install.packages("caret")
 library(caret)
-# install.packages("doMC", repos="http://R-Forge.R-project.org")
+install.packages("doMC", repos="http://R-Forge.R-project.org")
 require(doMC)
 
 ## For Windows
-#install.packages("doParallel")
-#require(doParallel)
+# install.packages("doParallel")
+require(doParallel)
 #install.packages("e1071")
 #library(e1097)
 ```
@@ -156,5 +156,5 @@ rm(grid)
 rm(model)
 ```
 
-**Question:** Repeat the same to find out time required to train model with different number of cores.
+**Question:** Repeat the same to find out time required to train model with different number of cores. 
 

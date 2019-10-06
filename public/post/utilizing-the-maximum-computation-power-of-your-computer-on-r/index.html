@@ -61,7 +61,7 @@ After this tutorial you will be able to:
   "headline": "Utilizing the maximum computation power of your computer on R",
   "description" : "Note\rPlease open your R-Studio as an administrator.\n\rOverview\rIn this tutorial, we introduce a package to use multiple cores of your system.\nAfter this tutorial you will be able to:\n\rTrain a neural network model without using multicores\rTrain a neural network model without using multicores\rCompare results\r\r\rUsing R Markdown\rThe tutorial that follows was created using R Markdown. As an exercise in using R Markdown, here, we ask you to save your work in an R Markdown file.",
   "inLanguage" : "en",
-  "wordCount":  692 ,
+  "wordCount":  714 ,
   "datePublished" : "2019-10-01T00:00:00",
   "dateModified" : "2019-10-01T00:00:00",
   "image" : "\/img\/bdi-logo.jpg",
@@ -236,7 +236,7 @@ After this tutorial you will be able to:
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;692&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;714&nbsp;words
   
   
     
@@ -305,16 +305,20 @@ knitr::opts_chunk$set(echo = TRUE)
 library(caret)</code></pre>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
-<pre class="r"><code># install.packages(&quot;doMC&quot;, repos=&quot;http://R-Forge.R-project.org&quot;)
-require(doMC)</code></pre>
+<pre class="r"><code>install.packages(&quot;doMC&quot;, repos=&quot;http://R-Forge.R-project.org&quot;)</code></pre>
+<pre><code>## Installing package into &#39;C:/Users/Justin Millar/Documents/R/win-library/3.6&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## installing the source package &#39;doMC&#39;</code></pre>
+<pre class="r"><code>require(doMC)</code></pre>
 <pre><code>## Loading required package: doMC</code></pre>
 <pre><code>## Loading required package: foreach</code></pre>
 <pre><code>## Loading required package: iterators</code></pre>
 <pre><code>## Loading required package: parallel</code></pre>
 <pre class="r"><code>## For Windows
-#install.packages(&quot;doParallel&quot;)
-#require(doParallel)
-#install.packages(&quot;e1071&quot;)
+# install.packages(&quot;doParallel&quot;)
+require(doParallel)</code></pre>
+<pre><code>## Loading required package: doParallel</code></pre>
+<pre class="r"><code>#install.packages(&quot;e1071&quot;)
 #library(e1097)</code></pre>
 </div>
 <div id="downloading-data" class="section level1">
@@ -345,7 +349,7 @@ max(model$results$Accuracy, na.rm = TRUE)</code></pre>
 print(&quot;Training time...&quot;)</code></pre>
 <pre><code>## [1] &quot;Training time...&quot;</code></pre>
 <pre class="r"><code>training_time-start_time</code></pre>
-<pre><code>## Time difference of 1.420509 mins</code></pre>
+<pre><code>## Time difference of 1.620343 mins</code></pre>
 <p><strong>Question</strong>: How much time is used by the model to train?</p>
 </div>
 <div id="set-the-number-of-cores-for-domc" class="section level1">
@@ -371,7 +375,7 @@ max(model$results$Accuracy, na.rm = TRUE)</code></pre>
 print(&quot;Training time...&quot;)</code></pre>
 <pre><code>## [1] &quot;Training time...&quot;</code></pre>
 <pre class="r"><code>training_time-start_time</code></pre>
-<pre><code>## Time difference of 1.37038 mins</code></pre>
+<pre><code>## Time difference of 1.611486 mins</code></pre>
 <p><strong>Question:</strong> How much time is taken by the model to train with 6 cores?</p>
 </div>
 <div id="cleaning" class="section level1">
