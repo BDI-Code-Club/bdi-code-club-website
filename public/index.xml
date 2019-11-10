@@ -5,10 +5,20 @@
     <link>/</link>
     <description>Recent content on BDI Code Club</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 01 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Version Control with Git, GitHub, and RStudio</title>
+      <link>/post/version-control-git/</link>
+      <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/version-control-git/</guid>
+      <description>Some Background Science is collaborative. Even a &amp;ldquo;solo&amp;rdquo; projects should be reproducible, meaning we should be thinking about how other researchers can benefit from our work. And we will always have at least one collaborator - our future selves. Each of us has at some point struggled to pick up a project after weeks or month (or even years) of inactivity.
+Science is collaborative, and collaboration is hard. Often we aren&amp;rsquo;t trained to collaborate effectively and may be unaware of tools and practices to improve our collaborations.</description>
+    </item>
     
     <item>
       <title>Utilizing the maximum computation power of your computer on R</title>
