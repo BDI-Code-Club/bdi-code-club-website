@@ -16,11 +16,11 @@ image: 'https://cdn2.iconfinder.com/data/icons/social-aquiocons/512/Aquicon-Gith
 
 ## Some Background
 
-Science is collaborative. Even a "solo" projects should be reproducible, meaning we should be thinking about how other researchers can benefit from our work. And we will always have at least one collaborator - **our future selves**. Each of us has at some point struggled to pick up a project after weeks or month (or even years) of inactivity.
+Science is collaborative. Even a "solo" projects should be reproducible, meaning we should be thinking about how other researchers can benefit from our work. And we will always have at least one collaborator - **our future selves**. Each of us has at some point struggled to pick up a project after weeks or months (or even years) of inactivity.
 
 ![](http://www.phdcomics.com/comics/archive/phd101212s.gif)
 
-Science is collaborative, and collaboration is hard. Often we aren't trained to collaborate effectively and may be unaware of tools and practices to improve our collaborations. Most of us have had similar experiences to the comic above when writing a manuscript with coauthors, however the stakes are even higher when collaborating on source code, such as R scripts. It is easy to introduce bugs which can break your code, which it why software programmers often use tools like Git and while these tools have more recently been adopted by academic researchers and data scientists. 
+Science is collaborative, and collaboration is hard. Often we aren't trained to collaborate effectively and may be unaware of tools and practices to improve our collaborations. Most of us have had similar experiences to the comic above when writing a manuscript with coauthors, however the stakes are even higher when collaborating on source code, such as R scripts. It is easy to introduce bugs which can break your code, which is why software programmers often use tools like Git and why these tools have more recently been adopted by academic researchers and data scientists. 
 
 ### What is Git and why should I bother?
 
@@ -28,26 +28,26 @@ Git is an open source program used for [version control]( https://en.wikipedia.o
 
 Git is a cross-platform (meaning is works on Windows, Mac, and Linux) program typically operated from the command line, and provides many, many tools for collaboration on software (which can be extended to other types of files).  Once you install Git, you can go to a folder (also called a repository) on your computer and initialize Git, which can then track how all of the files in that folder (and any subfolder) change over time. 
 
-Fair warning, learning Git is difficult and frustration. Adding Git into your daily workflow will seem strange at first and will probably cause you some headache. Thankfully you will typically only need a handful of the Git commands to do most of your versioning!
+Fair warning, learning Git is difficult and frustrating. Adding Git into your daily workflow will seem strange at first and will probably cause you some headaches. Thankfully you will typically only need a handful of the Git commands to do most of your versioning!
 
 ### The standard Git workflow
 
 ![](https://i.stack.imgur.com/UvZ0M.png)
 
-The diagram above illustrates how Git operates on your local computer. Once we initialize git within a folder it will track our progression as we make changes and commit them. Some of these terms may sound strange but will become familiar over time. In this section I'll tell the Git tools for using this workflow, but note that we'll be using RStudio to do all of this. 
+The diagram above illustrates how Git operates on your local computer. Once we initialize Git within a folder it will track our progression as we make changes and commit them. Some of these terms may sound strange but will become familiar over time. This section introduces the Git tools for using this workflow, but note that we'll be using RStudio to do all of this. 
 
-Focus on the **Local** part of the flowchart. As you work on your code, when reach a save point (maybe you just added a new feature or fixed a bug) you will add your progress to the "staging area" using `git pull`. Once we've added this changes to the staging area and are satisfied with them, we can commit the changes using `git commit`. Typically we will include a message with each commit that states what these changes have done. 
+Focus on the **Local** part of the flowchart. As you work on your code, when you reach a save point (maybe you just added a new feature or fixed a bug) you will add your progress to the "staging area" using `git add`. Once we've added these changes to the staging area and are satisfied with them, we can commit the changes using `git commit`. Typically we will include a message with each commit that states what these changes have done. 
 
 
 ### What is GitHub, and is it different from Git?
 
-GitHub is a hosting service, which provides you place on the internet for your Git projects.  You can think of it [like Dropbox or Google Drive (but much better)]( https://happygitwithr.com/big-picture.html ). There are many benefits for using hosting platforms like GitHub, but you *are not required to use GitHub (or any other hosting platform) while using Git*. It is perfectly fine to only use Git locally, though I'd argue you'd losing out on many of the benefits. 
+GitHub is a hosting service, which provides you with place on the internet for your Git projects.  You can think of it [like Dropbox or Google Drive (but much better)]( https://happygitwithr.com/big-picture.html ). There are many benefits for using hosting platforms like GitHub, but you *are not required to use GitHub (or any other hosting platform) while using Git*. It is perfectly fine to only use Git locally, though I'd argue you'd losing out on many of the benefits. 
 
- Also, you should be aware that there are other Git-based hosting services, such as [Bitbucket](https://bitbucket.org/) and [GitLab](https://about.gitlab.com/). We choose GitHub because it is the biggest and most well known, but you can use any other platform.
+Also, you should be aware that there are other Git-based hosting services, such as [Bitbucket](https://bitbucket.org/) and [GitLab](https://about.gitlab.com/). We choose GitHub because it is the biggest and most well-known, but you can use any other platform.
 
 Hosting platforms like GitHub provide a "remote" repository for our Git-based projects. Using the flowchart from the previous section, you can see that we can push the commits from our local repository to the remote repository using `git push`. This will update the remote repo with our new progress. 
 
-We can the pull in the remote repository to a local repo using `git pull`. This can be a really nice workflow if you often work on multiple computers (much more robust than emailing yourself!). Sometimes there may be differences between your local and remote repo, which is were tools list `git fetch`, `git diff`, and `git merge` can be helpful.
+We can then pull in the remote repository to a local repo using `git pull`. This can be a really nice workflow if you often work on multiple computers (much more robust than emailing yourself!). Sometimes there may be differences between your local and remote repo, which is were tools list `git fetch`, `git diff`, and `git merge` can be helpful.
 
 There were a lot of weird terms in these sections, but don't worry! We will use RStudio to do most of this for us. 
 
@@ -108,11 +108,11 @@ Create an account for free at [https://github.com](https://github.com/). Account
 
 #### Creating a [new repository](https://github.com/new)
 
-Starting a new project on GitHub, called a "repository" or "repo" can be done by clicking the green "New" button on your Repositories panel (on the left), or clicking the **+** icon on the upper right. 
+Starting a new project on GitHub, called a "repository" or "repo", can be done by clicking the green "New" button on your Repositories panel (on the left), or clicking the **+** icon on the upper right. 
 
-By default, new repos are **public**, which means that anyone with the URL can see your repositories contents. They can also download, or "clone", your repo. You can also choose to make your repo **private**, which means only invited collaborates can see and download your repo. Private repos on GitHub typically are not free, however you can apply for academic accounts which will provide you unlimited free private repos.  
+By default, new repos are **public**, which means that anyone with the URL can see the contents of your repository. They can also download, or "clone", your repo. You can also choose to make your repo **private**, which means only invited collaborates can see and download your repo. Private repos on GitHub typically are not free, however you can apply for academic accounts which will provide you unlimited free private repos.  
 
-Some people get catch up on the public versus private repos thing, don't let this stop you from using Git. I could argue that there are merits to doing science in the open, but even if your concerned about scooping you should still use Git. Typically academics won't have any problems getting free private repos from GitHub. Other platforms, such as GitLab, have unlimited free private repos. Please don't let this be the thing that stops you from using Git. 
+Some people get caught up on the public versus private repos thing, don't let this stop you from using Git. One could argue that there are merits to doing science in the open, but even if your concerned about scooping you should still use Git. Typically academics won't have any problems getting free private repos from GitHub. Other platforms, such as GitLab, have unlimited free private repos. Please don't let this be the thing that stops you from using Git. 
 
 ### Starting a new project with Git
 
@@ -122,7 +122,7 @@ There are a few different ways to start up a new project using R and Git. Below 
 
 I've found that it is typically easier to start from GitHub when you start learning Git. On [https://github.com](https://github.com/) create a new repository. Give the repo a name (this will be part of the repo's URL), and (if desired) a description. Select either public or private, then select *"Initialize this repository with a README"*. Click "Create repository".
 
-You will then be taken to your new GitHub repository, which will just have a file called README.md. This is a [Markdown]( https://en.wikipedia.org/wiki/Markdown ) file where you can place information about your repo later. On the right you should see a green button that says "Clone or download". Click this button and copy the link under "Clone with HTTPS".
+You will then be taken to your new GitHub repository, which will have a single file called README.md. This is a [Markdown]( https://en.wikipedia.org/wiki/Markdown ) file where you can place information about your repo later. On the right you should see a green button that says "Clone or download". Click this button and copy the link under "Clone with HTTPS".
 
 #### Create new Project in RStudio
 
@@ -164,7 +164,11 @@ Now go back to RStudio. To pull in the new commit from your remote repo click on
 
 ### Using the .gitignore file
 
+You don't have to tell Git to track all of the files in your repo. Git will be limited in tracking changes to complex file types (for instance, an Excel document instead of a CSV). You still can use Git on these files, but it won't be able to give you very informative outputs. Also large files can be an issue, as GitHub as limits on how large individuals files can be. We also might not want to include private or sensitive data. 
 
+Adding files to you .gitignore files is a convenient way to tell Git to not track certain files. You can open this file in RStudio, and you'll notice that there are already some files listed (R Projects do this automatically.). You can add single files to you .gitignore, but I find it easier to have entire sub-folders where I place the files I don't won't to track. For example, I can make a subfolder called "large-files" (you can do this in the Files panel in RStudio), then add `large-files/` to my .gitignore. 
+
+When I push my commits to GitHub it will ignore anything in the .gitignore file, however these files will still be in my local repo. This is a great way to exclude certain files from GitHub while still leveraging the power of Git for our source code files. 
 
 ### Git clients
 
