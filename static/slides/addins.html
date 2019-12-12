@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Aino Järvelin" />
+  <meta name="dcterms.date" content="2019-12-13" />
+  <title>The tiny helpers:</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="R-code-clinic-presentation_2019-12-13_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #0000ff; } /* Keyword */
+code > span.ch { color: #008080; } /* Char */
+code > span.st { color: #008080; } /* String */
+code > span.co { color: #008000; } /* Comment */
+code > span.ot { color: #ff4000; } /* Other */
+code > span.al { color: #ff0000; } /* Alert */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #008000; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #008080; } /* SpecialChar */
+code > span.vs { color: #008080; } /* VerbatimString */
+code > span.ss { color: #008080; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #0000ff; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ff4000; } /* Preprocessor */
+code > span.do { color: #008000; } /* Documentation */
+code > span.an { color: #008000; } /* Annotation */
+code > span.cv { color: #008000; } /* CommentVar */
+code > span.at { } /* Attribute */
+code > span.in { color: #008000; } /* Information */
+</style>
+
+<link rel="stylesheet" href="R-code-clinic-presentation_2019-12-13_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">The tiny helpers:</h1>
+  <h1 class="subtitle">how to use RStudio addins</h1>
+    <h2 class="author">Aino Järvelin</h2>
+    <h3 class="date">December 13, 2019</h3>
+</section>
+
+<section><section id="what-are-rstudio-add-ins" class="titleslide slide level1"><h1>WHAT ARE RSTUDIO ADD-INS?</h1></section><section id="what-are-rstudio-add-ins-1" class="slide level2">
+<h2>What are RStudio add-ins?</h2>
+<ul>
+<li class="fragment"><p>A mechanism for executing R functions interactively from within the RStudio IDE</p></li>
+<li class="fragment">Addins can facilitate many tasks including:
+<ul>
+<li class="fragment">writing r markdown documents</li>
+<li class="fragment">styling your R code</li>
+<li class="fragment">copying tables to and from Rstudio</li>
+<li class="fragment">interactively choosing colours for your graphs</li>
+</ul></li>
+</ul>
+</section><section id="installed-as-r-packages" class="slide level2">
+<h2>Installed as R packages</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install add-in &quot;remedy&quot; from CRAN:</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;remedy&quot;</span>)
+
+<span class="co"># Install add-in &quot;WrapRmd&quot; from GitHub:</span>
+devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;tjmahr/WrapRmd&quot;</span>)</code></pre></div>
+<!-- ## Add-in will appear in the Addins drop down menu -->
+</section><section id="appear-in-the-addins-drop-down-menu" class="slide level2">
+<h2>Appear in the Addins drop down menu</h2>
+<p><img src="images/addins-menu-3.png" width="453" /></p>
+<!-- ## Add-in will appear in the Addins drop down menu {data-background="images/addins-menu-2.png"} -->
+<!-- ```{r AddinMenuImage, echo=FALSE} -->
+<!-- knitr::include_graphics('images/addins-menu-2.png') -->
+<!-- ``` -->
+<!-- /\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\ -->
+<!-- SECTION 2: EXAMPLES -->
+<!-- /\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\ -->
+</section></section>
+<section><section id="examples" class="titleslide slide level1"><h1>EXAMPLES</h1></section><section id="writing-r-markdown" class="slide level2">
+<h2><strong>Writing R markdown</strong></h2>
+</section><section id="writing-r-markdown-1" class="slide level2">
+<h2><strong>Writing R markdown</strong></h2>
+<h3 id="simplify-markdown-writing-with-remedy">Simplify Markdown Writing with <a href="https://github.com/ThinkR-open/remedy">remedy</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;remedy&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of remedy in action -->
+<video controls>
+<source src="videos/remedy-formatting.mov" type="video/mp4">
+</video>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of remedy in action -->
+<video controls>
+<source src="videos/remedy-table.mov" type="video/mp4">
+</video>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of remedy in action -->
+<video controls>
+<source src="videos/remedy-image-url.mov" type="video/mp4">
+</video>
+</section><section id="writing-r-markdown-2" class="slide level2">
+<h2><strong>Writing R markdown</strong></h2>
+<h3 id="wrap-rmarkdown-text-with-wraprmd">Wrap RMarkdown text with <a href="https://github.com/tjmahr/WrapRmd">WrapRmd</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;tjmahr/WrapRmd&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/wraprmd.mov" type="video/mp4">
+</video>
+</section><section id="writing-r-markdown-3" class="slide level2">
+<h2><strong>Writing R markdown</strong></h2>
+<h3 id="get-word-count-and-readability-stats-with-wordcountaddin">Get word count and readability stats with <a href="https://github.com/benmarwick/wordcountaddin">wordcountaddin</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;benmarwick/wordcountaddin&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/wordcount.mov" type="video/mp4">
+</video>
+</section><section id="writing-r-markdown-4" class="slide level2">
+<h2><strong>Writing R markdown</strong></h2>
+<h3 id="check-spelling-with-wellspell.addin">Check spelling with <a href="https://github.com/nevrome/wellspell.addin">wellspell.addin</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;nevrome/wellspell.addin&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/wellspell.mov" type="video/mp4">
+</video>
+</section><section id="writing-r-markdown-5" class="slide level2">
+<h2><strong>Writing R markdown</strong></h2>
+<h3 id="insert-markdown-citations-with-citr">Insert markdown citations with <a href="https://github.com/crsh/citr">citr</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;citr&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/citr.mov" type="video/mp4">
+</video>
+</section><section id="styling-code" class="slide level2">
+<h2><strong>Styling code</strong></h2>
+</section><section id="styling-code-1" class="slide level2">
+<h2><strong>Styling code</strong></h2>
+<h3 id="align-assignment-operators-with-alignassign">Align assignment operators with <a href="https://github.com/seasmith/AlignAssign">alignassign</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;seasmith/AlignAssign&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/alignassign.mov" type="video/mp4">
+</video>
+</section><section id="styling-code-2" class="slide level2">
+<h2><strong>Styling code</strong></h2>
+<h3 id="pretty-print-r-code-with-styler">Pretty-print R code with <a href="https://github.com/r-lib/styler">styler</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;styler&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/styler.mov" type="video/mp4">
+</video>
+</section><section id="dealing-with-tables" class="slide level2">
+<h2><strong>Dealing with tables</strong></h2>
+</section><section id="dealing-with-tables-1" class="slide level2">
+<h2><strong>Dealing with tables</strong></h2>
+<h3 id="copying-and-pasting-data-to-r-with-datapasta">Copying and pasting data to R with <a href="https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html">datapasta</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;datapasta&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/datapasta.mov" type="video/mp4">
+</video>
+</section><section id="dealing-with-tables-2" class="slide level2">
+<h2><strong>Dealing with tables</strong></h2>
+<h3 id="copy-r-data-to-clipboard-with-copydat">Copy R data to clipboard with <a href="https://github.com/BAAQMD/copydat">copydat</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;BAAQMD/copydat&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/copydat.mov" type="video/mp4">
+</video>
+</section><section id="plotting" class="slide level2">
+<h2><strong>Plotting</strong></h2>
+</section><section id="plotting-1" class="slide level2">
+<h2><strong>Plotting</strong></h2>
+<h3 id="select-colours-with-colourpicker">Select colours with <a href="https://github.com/daattali/colourpicker">Colourpicker</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;colourpicker&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/colourpicker.mov" type="video/mp4">
+</video>
+</section><section id="meta" class="slide level2">
+<h2><strong>Meta</strong></h2>
+</section><section id="meta-1" class="slide level2">
+<h2><strong>Meta</strong></h2>
+<h3 id="find-addins-with-addinslist">Find addins with <a href="https://github.com/daattali/addinslist">addinslist</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;addinslist&#39;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/addinslist.mov" type="video/mp4">
+</video>
+</section><section id="meta-2" class="slide level2">
+<h2><strong>Meta</strong></h2>
+<h3 id="search-cran-with-cransearcher">Search CRAN with <a href="https://cran.r-project.org/web/packages/CRANsearcher/index.html">CRANsearcher</a></h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;CRANsearcher&quot;</span>)</code></pre></div>
+</section><section class="slide level2">
+
+<!-- This is TO BE a video of ADDIN in action -->
+<video controls>
+<source src="videos/CRANsearcher.mov" type="video/mp4">
+</video>
+<!-- /\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\ -->
+<!-- SECTION 3: CONCLUSIONS -->
+<!-- /\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\./\ -->
+</section></section>
+<section><section id="summary" class="titleslide slide level1"><h1>SUMMARY</h1></section><section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li class="fragment">Addins can make your RStudio coding experience easier</li>
+<li class="fragment">If you want to build your own addin, check out the instructions <a href="https://rstudio.github.io/rstudioaddins/#developing-addins">here</a></li>
+</ul>
+</section></section>
+<section><section id="thanks-for-listening" class="titleslide slide level1"><h1>THANKS FOR LISTENING!</h1></section></section>
+    </div>
+  </div>
+
+  <script src="R-code-clinic-presentation_2019-12-13_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="R-code-clinic-presentation_2019-12-13_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'R-code-clinic-presentation_2019-12-13_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>

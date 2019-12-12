@@ -12,4 +12,4 @@ subtitle: ''
 image: ''
 ---
 
-### [Link to presentation](https://bdicodeclub.netlify.com/slides/R-code-clinic-presentation_2019-12-13.html)
+### [Link to presentation](https://bdicodeclub.netlify.com/slides/addins.html)
