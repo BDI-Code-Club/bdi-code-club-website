@@ -5,10 +5,21 @@
     <link>/</link>
     <description>Recent content on BDI Code Club</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 12 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduction to Tidyverse</title>
+      <link>/post/introduction-to-tidyverse/</link>
+      <pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introduction-to-tidyverse/</guid>
+      <description>“The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.”
+The core eight packages of the tidyverse are:
+  Package Purpose Notably replaces    ggplot2 Graphics Core graphics  dplyr Data manipulation aggregate, common row and column operations  tidyr Data ‘tidying’ melt, dcast  readr Text file input read.table, etc  purrr Functional programming tools apply family  tibble Tables data.</description>
+    </item>
     
     <item>
       <title>The tiny helpers: how to use RStudio addins</title>
